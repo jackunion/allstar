@@ -3,8 +3,30 @@ interface Point {
   y: number
 }
 
-const manhattan = ({ x: x1, y: y1 }: Point, { x: x2, y: y2 }: Point) => {
-  return Math.abs(x1 - x2) + Math.abs(y1 - y2)
+const manhattan = (start: Point, end: Point) => {
+  const { x: x0, y: y0 } = start
+  const { x: x1, y: y1 } = end
+
+  return Math.abs(x0 - x1) + Math.abs(y0 - y1)
 }
 
-export const astar = () => {}
+const defaultGetNeighbors = (point: Point, width: number, height: number) => {
+  const { x, y } = point
+  const neighbors: Point[] = []
+
+  if (x > 0) neighbors.push({ x: x - 1, y: y })
+  if (y > 0) neighbors.push({ x: x, y: y - 1 })
+  if (x < width - 1) neighbors.push({ x: x + 1, y: y })
+  if (y < height - 1) neighbors.push({ x: x, y: y + 1 })
+
+  return neighbors
+}
+
+export const astar = (
+  start: Point,
+  end: Point,
+  getNeighbors: any = defaultGetNeighbors,
+  walkPath?: any,
+) => {
+  return []
+}
