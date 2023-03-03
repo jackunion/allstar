@@ -1,6 +1,16 @@
+import { PriorityQueue } from './PriorityQueue'
+
 interface Point {
   x: number
   y: number
+}
+
+interface AStar {
+  map: any
+  start: Point
+  end: Point
+  getNeighbors: any
+  walkFunction: any
 }
 
 const manhattan = (start: Point, end: Point) => {
@@ -22,11 +32,12 @@ const defaultGetNeighbors = (point: Point, width: number, height: number) => {
   return neighbors
 }
 
-export const astar = (
-  start: Point,
-  end: Point,
-  getNeighbors: any = defaultGetNeighbors,
-  walkPath?: any,
-) => {
+export const astar = ({
+  map,
+  start,
+  end,
+  getNeighbors = defaultGetNeighbors,
+  walkFunction,
+}: AStar) => {
   return []
 }
